@@ -15,7 +15,7 @@
                     </a>
                 </div>
 
-                <!-- Tableau des produits -->
+                <!-- Tableau des rendez-vous -->
                 <div class="overflow-x-auto">
                     <table class="w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
@@ -24,38 +24,39 @@
                                 <th class="py-3 px-6">Nom</th>
                                 <th class="py-3 px-6">Mail</th>
                                 <th class="py-3 px-6">Message</th>
-                                <th class="py-3 px-6">Prenom</th>
-                                <th class="py-3 px-6">Naissance </th>
+                                <th class="py-3 px-6">Prénom</th>
+                                <th class="py-3 px-6">Naissance</th>
                             </tr>
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach($rdv as $rendezvous)
-                            <tr>
-                                <td class="px-6 py-4">{{ $rendezvous-> Idrdv}}
-                                <td class="px-6 py-4">{{ $rendezvous->Nom }}</td>
-                                <td class="px-6 py-4">{{ $rendezvous->Mail }}</td>
-                                <td class="px-6 py-4">{{ $rendezvous->Message }}</td>
-                                <td class="px-6 py-4">{{ $rendezvous->Prenom }}</td>
-                                <td class="px-6 py-4">{{$rendezvous->Naissance}} </td>
-                                <td class="px-6 py-4">
-                                    <!-- Bouton visionner -->
-                                    <a class="btn btn-primary" href="{{ route('Rdv.update', ['Rdv' => $rendezvous->Idrdv]) }}">
-                                        Modifier
-                                    </a>
+    @foreach($rdv as $rendezvous)
+    <tr>
+        <td class="px-6 py-4">{{ $rendezvous->Idrdv }}</td>
+        <td class="px-6 py-4">{{ $rendezvous->Nom }}</td>
+        <td class="px-6 py-4">{{ $rendezvous->Mail }}</td>
+        <td class="px-6 py-4">{{ $rendezvous->Message }}</td>
+        <td class="px-6 py-4">{{ $rendezvous->Prenom }}</td>
+        <td class="px-6 py-4">{{ $rendezvous->Naissance }}</td>
+        <td class="px-6 py-4">
+            <!-- Formulaire de suppression -->
+            <form action="{{ route('Rendezvous.destroy', $rendezvous->Idrdv) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce rendez-vous ?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+        
+            </form>
+        </td>
+        <td class="px-6 py-4">
+        <form action="{{ route('Rendezvous.edit', $rendezvous->Idrdv) }}" method="GET">
+    <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
 
-                                    <!-- Bouton supprimer -->
-                                    <form action="{{ route('Rdv.destroy', ['Rdv' => $rendezvous->Idrdv]) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            Supprimer
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+    </tr>
+    @endforeach
+</tbody>
+
+
                     </table>
                 </div>
             </div>

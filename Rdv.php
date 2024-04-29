@@ -4,13 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Controller\RendezvousController;
+
 class Rdv extends Model
 {
-    protected $primaryKey = 'Idrdv';
-    protected $table='rdv';
     use HasFactory;
 
-    protected $fillable = ['Idrdv','Nom', 'Prenom', 'email', 'Message', 'Naissance'];
+    protected $table = 'rdv';
 
+    protected $fillable = [
+        'Idrdv',
+        'Nom',
+        'Mail',
+        'Message',
+        'Prenom',
+        'Naissance'
+    ];
+
+    protected $primaryKey = 'Idrdv';
+
+    public $timestamps = false; // Désactiver les timestamps
+
+    // Ajoutez les relations avec d'autres modèles ici, si nécessaire
 }

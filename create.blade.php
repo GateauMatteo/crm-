@@ -10,33 +10,40 @@
                 </h2>
 
                 <!-- Formulaire de création de rendez-vous -->
-                <form action="{{ route('rendezvous.index) }}" method="POST">
+                <form action="{{ route('Rendezvous.store') }}" method="POST">
+
                     @csrf
+                    <div class="mb-2">
+                        <label for="Idrdv" class="block text-gray-700 text-sm font-bold mb-2">Id du Rdv:</label>
+                        <input type="number" name="Idrdv" id="Idrdv" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez l'identifiant du rendez-vous" required> 
+                    <div class="mb-2">
+                        <label for="Nom" class="block text-gray-700 text-sm font-bold mb-2">Nom du client :</label>
+                        <input type="text" name="Nom" id="Nom" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le nom du client" required>
+                    </div>
+
+                    
 
                     <div class="mb-2">
-                        <label for="nom" class="block text-gray-700 text-sm font-bold mb-2">Nom du client :</label>
-                        <input type="text" name="nom" id="nom" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le nom du client" required>
+                        <label for="Mail" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
+                        <input type="email" name="Mail" id="Mail" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez l'email du client" required>
+                    </div>
+
+
+                  
+                    <div class="mb-2">
+                        <label for="Message" class="block text-gray-700 text-sm font-bold mb-2">Message :</label>
+                        <textarea name="Message" id="Message" rows="4" class="form-textarea rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le message du client" required></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label for="Prenom" class="block text-gray-700 text-sm font-bold mb-2">Prénom du client :</label>
+                        <input type="text" name="Prenom" id="Prenom" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le prénom du client" required>
                     </div>
 
                     <div class="mb-2">
-                        <label for="prenom" class="block text-gray-700 text-sm font-bold mb-2">Prénom du client :</label>
-                        <input type="text" name="prenom" id="prenom" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le prénom du client" required>
+                        <label for="Naissance" class="block text-gray-700 text-sm font-bold mb-2">Date de naissance :</label>
+                        <input type="date" name="Naissance" id="Naissance" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez la date de naissance" required>
                     </div>
-
-                    <div class="mb-2">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
-                        <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez l'email du client" required>
-                    </div>
-
-                    <div class="mb-2">
-                        <label for="naissance" class="block text-gray-700 text-sm font-bold mb-2">Date de naissance :</label>
-                        <input type="date" name="naissance" id="naissance" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez la date de naissance" required>
-                    </div>
-
-                    <div class="mb-2">
-                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message :</label>
-                        <textarea name="message" id="message" rows="4" class="form-textarea rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le message du client" required></textarea>
-                    </div>
+                    
 
                     <button type="submit" class="btn" style="background-color: #3498db; border-radius: 8px; color: white; padding: 8px 15px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
                         Créer le rendez-vous
