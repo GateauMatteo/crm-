@@ -45,7 +45,8 @@ Route::get('/achat/show', [AchatController::class, 'show'])->name('achat.show');
 Route::post('/achat', [AchatController::class, 'store'])->name('achat.store');
 Route::put('/achat/{achat}', [AchatController::class, 'update'])->name('achat.update');
 Route::delete('/achat/{achat}', [AchatController::class, 'destroy'])->name('achat.destroy');
-Route::get('/achat/edit',[AchatController::class, 'edit'])->name('achat.edit');
+Route::get('/achat/{achat}/edit', [AchatController::class, 'edit'])->name('achat.edit');
+Route::patch('/achat/{achat}',[AchatController::class,'update'])->name('achat.update');
 
 
 
@@ -58,15 +59,19 @@ Route::get('/produits', [ProduitsController::class, 'index'])->name('produits.in
 Route::post('/produits',[ProduitsController::class,'store'])->name('produits.store');
 Route::get('/produits/create',[ProduitsController::class, 'create'])->name('produits.create');
 Route::get('/produits/show',[ProduitsController::class,'show'])->name('produits.show');
-Route::delete('/produits/{produit}',[ProduitsController::class'destroy'])->name('produits.destroy');
-Route::get('/produits/edit',[ProduitsController::class,'edit'])->name('produtis.edit');
+Route::delete('/produits/{produit}',[ProduitsController::class,'destroy'])->name('produits.destroy');
+Route::get('/produits/{produit}/edit', [ProduitsController::class, 'edit'])->name('produits.edit');
 
-Route::get('/Rendezvous',[RendezvousController::class,'index'])->name('Rendezvous.index');
-Route::get('/Rendezvous/create',[RendezvousController::class,'create'])->name('Rendezvous.create');
-Route::get('/Rendezvous/show',[RendezvousController::class,'show'])->name('Rendezvous.show');
-Route::post('/Rendezvous',[RendezvousController::class,'store'])->name('Rendezvous.store');
-Route::delete('/Rendezvous',[RendezvousController::class,'destroy'])->name('Rendezvous.destroy');
-Route::get('/Rendezvous/edit', [RendezvousController::class, 'edit'])->name('rendezvous.edit');
+Route::patch('/produits/{produit}',[ProduitsController::class,'update'])->name('produits.update');
+
+Route::get('/Rendezvous', [RendezvousController::class,'index'])->name('Rendezvous.index');
+Route::get('/Rendezvous/create', [RendezvousController::class,'create'])->name('Rendezvous.create');
+Route::get('/Rendezvous/show', [RendezvousController::class,'show'])->name('Rendezvous.show');
+Route::post('/Rendezvous', [RendezvousController::class,'store'])->name('Rendezvous.store');
+Route::delete('/Rendezvous/{Rdv}', [RendezvousController::class, 'destroy'])->name('Rendezvous.destroy');
+Route::patch('/rendezvous/{rdv}', [RendezvousController::class, 'update'])->name('Rendezvous.update');
+Route::get('/rendezvous/{rdv}/edit', [RendezvousController::class, 'edit'])->name('Rendezvous.edit');
+
 
 
 

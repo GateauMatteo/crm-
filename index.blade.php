@@ -24,8 +24,8 @@
                                 <th class="py-3 px-6">Nom</th>
                                 <th class="py-3 px-6">Prix</th>
                                 <th class="py-3 px-6">Description</th>
-                                <th class="py-3 px-6">Images</th>
-                                <th class="py-3 px-6">Actions</th>
+                                
+                      
                             </tr>
                         </thead>
 
@@ -36,25 +36,22 @@
                                 <td class="px-6 py-4">{{ $produit->NomProd }}</td>
                                 <td class="px-6 py-4">{{ $produit->Prix }}</td>
                                 <td class="px-6 py-4">{{ $produit->DescProd }}</td>
-                                <td class="px-6 py-4">{{$produit->Image}} </td>
                                 <td class="px-6 py-4">
-                                    <!-- Bouton visionner -->
-                                    <a class="btn btn-primary" href="{{ route('produits.update', ['produit' => $produit->IdProd]) }}">
-                                        Modifier
-                                    </a>
+                                 <!-- Formulaire de suppression -->
+            <form action="{{ route('produits.destroy', $produit->IdProd) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </td>
+        <td class="px-6 py-4">
+        <form action="{{ route('produits.edit', $produit->IdProd) }}" method="GET">
+    <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
 
-                                    <!-- Bouton supprimer -->
-                                    <form action="{{ route('produits.destroy', ['produit' => $produit->IdProd]) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            Supprimer
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+    </tr>
+    @endforeach
+</tbody>                                      
                     </table>
                 </div>
             </div>

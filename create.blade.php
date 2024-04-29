@@ -12,28 +12,33 @@
                 </h2>
 
                 <!-- Votre formulaire de création d'achat ici -->
-                <form action="{{ route('produits.index') }}" method="POST">
+                <form action="{{ route('produits.store') }}" method="POST" >
+
                     @csrf
 
+ <div class="mb-4">
+    <label for="IdProd" class="block text-gray-700 text-sm font-bold mb-2">Identifiant de Produit:</label>
+    <input type="number" name="IdProd" id="IdProd" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez l'identifiant du produit" required>
+</div>
+
+
                     <div class="mb-2">
-                        <label for="nom" class="block text-gray-700 text-sm font-bold mb-2">Nom du produit:</label>
-                        <input type="text" name="nom" id="NomProd" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le nom du produit" required>
+                        <label for="NomProd" class="block text-gray-700 text-sm font-bold mb-2">Nom du produit:</label>
+                        <input type="text" name="NomProd" id="NomProd" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le nom du produit" required>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
-                        <textarea name="description" id="DescProd" rows="3" class="form-textarea rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez la description du produit" required></textarea>
-                    </div>
+                 
 
                     <div class="mb-4">
-                        <label for="prix" class="block text-gray-700 text-sm font-bold mb-2">Prix:</label>
-                        <input type="number" name="prix" id=Prix" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le prix du produit" required>
+                        <label for="Prix" class="block text-gray-700 text-sm font-bold mb-2">Prix:</label>
+                        <input type="number" name="Prix" id=Prix" class="form-input rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez le prix du produit" required>
                     </div>
+                  
                     <div class="mb-4">
-                        <label for="Image" class="block text-gray-700 text-sm font-bold mb-2">Image:</label>
-                        <input type="file" name="Image" id="Image" class="form-input rounded-md shadow-sm mt-1 block w-full" required>
+                        <label for="DescProd" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                        <textarea name="DescProd" id="DescProd" rows="3" class="form-textarea rounded-md shadow-sm mt-1 block w-full" placeholder="Entrez la description du produit" required></textarea>
                     </div>
-                   
+
 
                     <button type="submit" class="btn" style="background-color: #3498db; border-radius: 8px; color: white; padding: 8px 15px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
                         Créer le produit 

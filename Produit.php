@@ -4,14 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Controller\ProduitController;
+
 class Produit extends Model
 {
-    protected $primaryKey = 'IdProd';
-    protected $table='produit';
     use HasFactory;
 
-protected $fillable =[
-    'idProd','NomProd','Prix','DescProd','Image'
- ];
+    protected $table = 'produit';
+
+    protected $fillable = [
+        'IdProd',
+        'NomProd',
+        'Prix',
+        'DescProd',
+    ];
+
+    protected $primaryKey = 'IdProd';
+
+    public $timestamps = false; // Désactiver les timestamps
+
+    // Ajoutez les relations avec d'autres modèles ici, si nécessaire
 }
+
