@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container mx-auto py-8">
-    <h2 class="text-2xl font-semibold mb-4">Modifier le rendez-vous</h2>
+    <h2 class="text-2xl font-semibold mb-4">Modifier l'achat</h2>
 
     <!-- Formulaire d'édition -->
-    <form action="{{ route('Achat.update', ['id' => $rendezvous->id]) }}" method="POST">
+    <form action="{{ route('achat.update', ['id' => $achat->IDAchat]) }}" method="POST">
 
         @csrf
-        @method('PUT')
+        @method('PATCH')
 
         <!-- Champ Prix Total-->
         <div class="mb-4">

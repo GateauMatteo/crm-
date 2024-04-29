@@ -12,14 +12,14 @@ class Achat extends Model
     protected $table = 'achat';
 
     protected $fillable = [
-        'IdAchat',
+        'IDAchat',
         'PrixTotal',
         'Qte',
         'IdLigne',
         'IdProd'
     ];
 
-    protected $primaryKey = 'IdAchat';
+    protected $primaryKey = 'IDAchat';
 
     public $timestamps = false; // Désactiver les timestamps
 

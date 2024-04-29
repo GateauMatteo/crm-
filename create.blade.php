@@ -12,6 +12,10 @@
                 <form method="POST" action="{{ route('achat.store') }}">
                     @csrf
                     <div class="mb-4">
+                        <label for="IDAchat" class="block text-sm font-medium text-gray-700">Id:</label>
+                        <input type="number" name="IDAchat" id="IDAchat" required class="mt-1 block w-full" placeholder="Entrez la quantité">
+                    </div>
+                    <div class="mb-4">
                         <label for="PrixTotal" class="block text-sm font-medium text-gray-700">Prix Total:</label>
                         <input type="number" step="0.01" name="PrixTotal" id="PrixTotal" required class="mt-1 block w-full" placeholder="Entrez le prix total de l'achat">
                     </div>

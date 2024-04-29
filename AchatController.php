@@ -57,7 +57,7 @@ class AchatController extends Controller
      */
     public function edit(Achat $achat)
     {
-        // Ajoutez du code ici si nécessaire
+        return view('achat.edit', compact('achat'));
     }
 
     /**
@@ -82,11 +82,18 @@ class AchatController extends Controller
     /**
      * Supprime un achat spécifique.
      */
-    public function destroy(Achat $achat)
+    public function destroy($IDAchat)
     {
-        $achat->delete(); // Utilise la variable `$achat` pour supprimer l'achat
+        // Trouve le rendez-vous par ID
+        $achat = Achat::findOrFail($IDAchat);
+        
+        // Supprime le rendez-vous
+        $achat->delete();
     
-        return redirect()->route('achat.index')->with('success', 'Achat supprimé avec succès!');
+        // Redirige vers la liste des rendez-vous avec un message de succès
+        return redirect()->route('achat.index')->with('success', 'Rendez-vous supprimé avec succès!');
     }
+    
+    
     
 }

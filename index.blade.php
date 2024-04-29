@@ -31,27 +31,29 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($achats as $achat)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $achat->IdAchat }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $achat->IDAchat }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $achat->PrixTotal }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $achat->Qte }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $achat->IdLigne }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $achat->IdProd }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="{{ route('achat.show', ['achat' => $achat->IdAchat]) }}" class="btn" style="background-color: #3498db; border-radius: 8px; color: white; padding: 8px 10px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
-                                        Voir
-                                    </a>
+                                <form action="{{ route('achat.edit', $achat->IDAchat) }}" method="GET">
+    <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
 
-                                    <form action="{{ route('achat.destroy', ['achat' => $achat->IdAchat]) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn" style="background-color: #e74c3c; border-radius: 8px; color: white; padding: 8px 10px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
-                                            Supprimer
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                   <!-- Formulaire de suppression -->
+            <form action="{{ route('achat.destroy', $achat->IDAchat) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette achat ?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+            <td>
+        
+    </tr>
+    @endforeach
+</tbody>
                     </table>
                 </div>
             </div>
